@@ -1,0 +1,182 @@
+@font-face {
+  font-family: "roboto";
+  src: url("../../assets/roboto/roboto-medium.ttf")
+}
+
+body {
+  background-color: rgb(15, 15, 15);
+  font-family: 'roboto';
+  color: white;
+}
+
+canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.outer,
+.inner {
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.outer,
+.playlist {
+  width: 31.25rem;
+  height: 31.25rem;
+}
+
+.inner {
+  width: 21.875rem;
+  height: 21.875rem;}
+
+.play {
+  position: absolute;
+  bottom: 1.875rem;
+  left: 14.4375rem;
+  width: 2.375rem;
+  height: 1.125rem;
+}
+
+.showPlaylist {
+  position: absolute;
+  top: 1.875rem;
+  left: 14.8125rem;
+  width: 1.625rem;
+  height: 1.25rem; 
+}
+
+.prev {
+  position: absolute;
+  top: 15.0625rem;
+  left: 1.5625rem;
+  width: 2.25rem;
+  height: 1.125rem;
+}
+
+.next {
+  position: absolute;
+  top: 15.0625rem;
+  right: 1.5625rem;
+  width: 2.25rem;
+  height: 1.125rem;
+}
+
+.close {
+  position: absolute;
+  top: 1.875rem;
+  left: 14.9625rem;
+  width: 1.325rem;
+  height: 1.325rem;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+p#title {
+  width: 18.75rem;
+  position: absolute;
+  top: 8.53125rem;
+  left: 1.5625rem;
+  font-size: 1.5rem;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+p#author {
+  width: 15rem;
+  position: absolute;
+  top: 11rem;
+  left: 3.4375rem;
+  font-size: 1rem;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+symbol { 
+  fill: white;
+}
+
+svg {
+  cursor: pointer;
+}
+
+.playlist {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#tracks {
+  width: 400px;
+  max-height: 380px;
+  position: relative;
+  margin: 0 auto;
+  top: 100px;
+  color: #fff;
+}
+
+p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.hide {
+  animation-name: hideAnimation;
+  animation-duration: 100ms;
+  animation-fill-mode: forwards;
+}
+
+.show {
+  animation-name: showAnimation;
+  animation-duration: 500ms;
+  animation-fill-mode: backwards;
+}
+
+@keyframes hideAnimation{
+  0%{
+      opacity: 1;
+  }
+  50%{
+      opacity: 0.5;
+  }
+  100%{
+      visibility: hidden;
+      opacity: 0;
+  }
+}
+
+@keyframes showAnimation{
+  0%{
+      visibility: hidden;
+      opacity: 0;
+  }
+  50%{
+      opacity: 0.5;
+  }
+  100%{
+      opacity: 1;
+  }
+}
+
+
+@media (max-width: 768px) {
+  body {
+    transform: scale(0.8);
+  }
+}
+@media (max-width: 420px) {
+  body {
+    transform: scale(0.7);
+  }
+}

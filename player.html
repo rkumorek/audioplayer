@@ -1,0 +1,70 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Audio Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="src/css/style.css" type="text/css" />
+  <script type="text/javascript" src="./src/js/webpjs-0.0.2.min.js"></script>
+  <script src=".\src\js\load.js"></script>
+  <script src=".\src\js\draw.js" defer></script>
+</head>
+
+<body>  
+  <img src="" alt="">
+  <canvas id="canvas" width="506px" height="506px"></canvas>
+  <svg style="display: none;">
+    <defs>
+      <symbol viewBox="0 0 38 18" id="playOrPause">
+        <polygon id="x" points="0,17 18,9 0,1 	" />
+        <rect x="26" width="4" height="18" />
+        <rect x="34" width="4" height="18" />
+      </symbol>
+      <symbol viewBox="0 0 36 18" id="prev">
+        <polygon points="36,17 18,9 36,1 	" />
+        <polygon points="20,17 2,9 20,1 	" />
+        <rect x="0" y="0" transform="matrix(-1 -4.502011e-11 4.502011e-11 -1 4 18)" width="4" height="18" />
+      </symbol>
+      <symbol viewBox="0 0 36 18" id="next">
+        <polygon points="0,17 18,9 0,1 	" />
+        <polygon points="16,17 34,9 16,1 	" />
+        <rect x="32" width="4" height="18" />
+      </symbol>
+      <symbol viewBox="0 0 26 20" id="showPlaylist">
+        <rect x="11" y="-11" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 15 -11)" width="4" height="26" />
+        <rect x="11" y="-3" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 23 -3)" width="4" height="26" />
+        <rect x="11" y="5" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 31 5)" width="4" height="26" />
+      </symbol>
+      <symbol viewBox="0 0 21.2 21.2" id="close">
+        <rect x="8.6" y="-2.4" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -4.3906 10.6133)" width="4" height="26" />
+        <rect x="-2.4" y="8.6" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -4.3867 10.6038)" width="26" height="4" />
+      </symbol>
+    </defs>
+  </svg>
+  <div class="outer show">
+    <svg class="play">
+      <use xlink:href="#playOrPause" />
+    </svg>
+    <svg class="prev">
+      <use xlink:href="#prev" />
+    </svg>
+    <svg class="next">
+      <use xlink:href="#next" />
+    </svg>
+    <svg class="showPlaylist">
+      <use xlink:href="#showPlaylist" />
+    </svg>
+    <div class="inner">
+      <p id="title"></p>
+      <p id="author"></p>
+    </div>
+  </div>
+  <div class="playlist hidden">
+    <svg class="close">
+      <use xlink:href="#close" />
+    </svg>
+    <div id="tracks"></div>
+  </div>
+</body>
+
+</html>
