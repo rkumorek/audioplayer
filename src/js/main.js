@@ -1,3 +1,13 @@
+// Check for webp support
+async function supportsWebp() {
+  if (!self.createImageBitmap) return false;
+  
+  const webpData = 'data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=';
+  const blob = await fetch(webpData).then(r => r.blob());
+  return createImageBitmap(blob).then(() => true, () => false);
+}
+
+//---------------------------------------------------------
 let song, tracksIndex, ext;
 const dir = "assets/audio/";
 const playlist = ["Alan Walker + Linkin Park - One More Light Faded (MASHUP)",
@@ -23,10 +33,11 @@ song.addEventListener('ended', function () {
   loadSong();
 })
 
+
 // Play song on page load
 function loadSong() {
   song.src = dir + playlist[playlistIndex] + ext;
-  song.autoplay = true;
+  //song.autoplay = true;
   //Author and title
   let track = playlist[playlistIndex].split(/\s-\s(.*)/g);
   let author = track[0];
@@ -36,11 +47,16 @@ function loadSong() {
   roundTimer();
 
   // Background images 
-const picture = document.querySelector("body");
-picture.setAttribute("style", "background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../assets/images/" + playlistIndex + ".webp); background-size: cover; background-position: center center;")
-
-}
-
+  const picture = document.querySelector("body");
+  (async () => {
+    if(await supportsWebp()) {
+      picture.setAttribute("style", "background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./assets/images/" + playlistIndex + ".webp); background-size: cover; background-position: center center;")
+    }
+    else {
+      picture.setAttribute("style", "background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./assets/images/" + playlistIndex + ".jpg); background-size: cover; background-position: center center;")
+    }
+  })();
+};
 window.onload = loadSong();
 
 // Controls with svg object
@@ -101,6 +117,7 @@ closeSVG.onclick = function () {
   back.classList.add("hidden");
 }
 
+// Playlist
 let y = document.getElementById("tracks");
 for (i = 1; i <= playlist.length; i++) {
   let p = "<p>" + i + ". " + playlist[i - 1] + "</br></p>"

@@ -1,12 +1,15 @@
 @font-face {
   font-family: "roboto";
-  src: url("../../assets/roboto/roboto-medium.ttf")
+  src: url("../../assets/fonts/roboto.ttf")
 }
 
 body {
   background-color: rgb(15, 15, 15);
   font-family: 'roboto';
   color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../assets/images/0.webp"), url("../../assets/images/0.jpg");
+  background-size: cover;
+  background-position: center center;
 }
 
 canvas {
@@ -170,13 +173,18 @@ p {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 500px) {
   body {
     transform: scale(0.8);
   }
 }
-@media (max-width: 420px) {
+@media (max-width: 420px), (max-height: 420px) {
   body {
     transform: scale(0.7);
+  }
+}
+@media (max-width: 360px), (max-height: 360px) {
+  body {
+    transform: scale(0.6);
   }
 }
